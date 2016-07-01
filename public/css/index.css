@@ -1,0 +1,28 @@
+@font-face{
+    font-family: 'pixel';
+    src: url('/assets/fonts/pixel.ttf');
+}
+
+@font-face{
+    font-family: 'prstart';
+    src: url('/assets/fonts/prstart.ttf');
+}
+
+body  {
+    padding: 0;
+    margin: 0;
+}
+
+.font-pixel{
+    font-family: pixel;
+}
+
+.font-prstart{
+    font-family: prstart;
+}
+
+.hide {
+    visibility: hidden;
+    position: fixed;
+    right: -10px;
+}

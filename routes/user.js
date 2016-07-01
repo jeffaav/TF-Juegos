@@ -23,7 +23,7 @@ router.get('/:id', function (req, res) {
 router.post('/', function (req, res) {
     var user = new User();
     user.name = req.body.name;
-    user.facebookId = req.body.facebookId;
+    user.facebookId = req.body.id;
     
     user.save(function (err) {
         if (err) {

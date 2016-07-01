@@ -1,0 +1,21 @@
+{
+  "name": "tf-juegos",
+  "description": "trabajo final de juegos",
+  "main": "app.js",
+  "authors": [
+    "jeffrey aguirre"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/jeffaav/TF-Juegos",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "^3.0.0"
+  }
+}
