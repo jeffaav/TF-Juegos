@@ -9,7 +9,6 @@ Preload.prototype = {
         this.game.load.setPreloadSprite(this.preloading);
         
         this.game.load.image('login-facebook', 'assets/images/login-facebook.png');
-        
         this.game.load.image('ship1', 'assets/images/ship1.png');
         this.game.load.image('ship2', 'assets/images/ship2.png');
         this.game.load.image('ship3', 'assets/images/ship3.png');
@@ -18,6 +17,12 @@ Preload.prototype = {
         this.game.load.image('ship6', 'assets/images/ship6.png');
         this.game.load.image('ship7', 'assets/images/ship7.png');
         this.game.load.image('bg_stars', 'assets/images/bg_stars.png');
+        this.game.load.image('bullet', 'assets/images/bullet.png');
+        this.game.load.image('pilot', 'assets/images/pilot.png');
+        this.game.load.image('singleplayer', 'assets/images/singleplayer.png');
+        this.game.load.image('multiplayer', 'assets/images/multiplayer.png');
+        
+        this.game.load.json('configuration', '/assets/jsons/configuration.json');
     },
     create: function () {
         var tween = this.game.add.tween(this.preloading).to({ alpha: 0 }, 500);

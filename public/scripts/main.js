@@ -13,3 +13,9 @@ var socket = io();
 
 socket.on('connect', function (data) {
 })
+
+
+
+window.onunload = function () {
+    socket.disconnect(); 
+}

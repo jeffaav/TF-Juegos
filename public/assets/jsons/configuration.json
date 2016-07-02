@@ -1,0 +1,39 @@
+{
+    "levels": [
+        {
+            "rangeNumberEnemy": {
+                "min": 2,
+                "max": 4
+            }
+        },
+        {
+            "rangeNumberEnemy": {
+                "min": 3,
+                "max": 6
+            }
+        },
+        {
+            "rangeNumberEnemy": {
+                "min": 7,
+                "max": 9
+            }
+        }
+    ],
+    "paddingWorld": 300,
+    "lifebar": {
+        "width": 400,
+        "height": 60,
+        "life": 200,
+        "enemyWidth": 100,
+        "enemyHeight": 20,
+        "enemylife": 60
+    },
+    "levelText": {
+        "x": 170,
+        "y": 20
+    }, 
+    "enemyGroupText": {
+        "x": 260,
+        "y": 50
+    }
+}

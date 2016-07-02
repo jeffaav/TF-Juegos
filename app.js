@@ -7,42 +7,50 @@ var express = require("express"),
     
 var config = {
     port: process.env.PORT,
-    ip: process.env.IP
+    ip: process.env.IP,
+    useWebServices: true
 }
-
-//mongoose.connect('mongodb://' + config.ip + '/tf');
     
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-//var user = require('./routes/user.js');
-//app.use('/api/users', user);
-
-app.use('/api', function (req, res) {
-    res.json({ message: 'holi' });
-});
+if (config.useWebServices) {
+    mongoose.connect('mongodb://' + config.ip + '/tf');
+    
+    var user = require('./routes/user.js');
+    app.use('/api/users', user);
+    
+    app.use('/api', function (req, res) {
+        res.json({ message: 'holi' });
+    });
+}
 
 var players = {};
 
 io.on('connection', function (socket) {
     
     socket.on('newPlayer', function (playerInfo) {
-        playerInfo.clientId = socket.client.id;
-        socket.broadcast.emit('playerJoining', playerInfo);
+        players[playerInfo.id] = playerInfo;
         socket.emit('updatePlayersInfo', players);
-        players[socket.client.id] = playerInfo;
+        socket.broadcast.emit('playerJoining', playerInfo);
+        socket.playerId = playerInfo.id;
     });
     
-    socket.on('updatePosition', function (playerInfo) {
+    socket.on('movePlayer', function (playerInfo) {
         socket.broadcast.emit('playerMoving', playerInfo);
-        players[socket.client.id] = playerInfo;
+        players[playerInfo.id] = playerInfo;
     });
     
+    socket.on('shoot', function(playerId) {
+        socket.broadcast.emit('createBullet', playerId);
+    })
     
     socket.on('disconnect', function() {
-        socket.broadcast.emit('playerDisconnected', socket.client.id);
-        delete players[socket.client.id];
+        delete players[socket.playerId];
+        console.log(socket.playerId);
+        console.log(players);
+        socket.broadcast.emit('playerDisconnected', socket.playerId);
     });
 });
 

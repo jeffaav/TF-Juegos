@@ -3,7 +3,9 @@ var mongoose = require("mongoose"),
     
 var UserSchema = new Schema({
     name: String,
-    facebookId: String
+    facebookId: String,
+    ranking: String,
+    _id: String
 });
 
 module.exports = mongoose.model('User', UserSchema);

@@ -12,7 +12,7 @@ router.get('/', function (req, res) {
 });
 
 router.get('/:id', function (req, res) {
-   User.findById(req.params.id, function (err, data) {
+    User.findById(req.params.id, function (err, data) {
        if (err) {
            res.send(err);
        }
